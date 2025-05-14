@@ -1,0 +1,22 @@
+{
+  "name": "ginidocs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx concurrently -n API,WEB,SERVICES -c yellow,green,blue \"npm run start:dev --prefix backend\" \"npm run dev --prefix web\" \"docker compose up\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrBisbis631/ginidocs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MrBisbis631/ginidocs/issues"
+  },
+  "homepage": "https://github.com/MrBisbis631/ginidocs#readme"
+}
