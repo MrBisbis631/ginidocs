@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx concurrently -n API,WEB,SERVICES -c yellow,green,blue \"npm run start:dev --prefix backend\" \"npm run dev --prefix web\" \"docker compose up\""
+    "dev": "npx concurrently -n API,WEB,SERVICES -c yellow,green,blue \"dotenv -e .env -- npm run start:dev --prefix backend\" \"dotenv -e .env -- npm run dev --prefix web\" \"docker compose up\""
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/MrBisbis631/ginidocs/issues"
   },
-  "homepage": "https://github.com/MrBisbis631/ginidocs#readme"
+  "homepage": "https://github.com/MrBisbis631/ginidocs#readme",
+  "devDependencies": {
+    "dotenv-cli": "^8.0.0"
+  }
 }
