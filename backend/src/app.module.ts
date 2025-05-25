@@ -21,7 +21,7 @@ import { AuthModule } from './auth/auth.module';
         password: config.get<string>('DB_PASSWORD'),
         database: config.get<string>('DB_NAME'),
         autoLoadEntities: true,
-        synchronize: process.env.NODE_ENV === 'development',
+        synchronize: false,
       }),
     }),
 
@@ -30,4 +30,4 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}
