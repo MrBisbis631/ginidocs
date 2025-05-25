@@ -23,6 +23,12 @@ export class AuthController {
     return this.authService.login(user);
   }
 
+  @Public()
+  @Post('refresh')
+  refreshToken(@Body('refreshToken') refreshToken: string) {
+    return this.authService.refresh(refreshToken);
+  }
+
   @Get('profile')
   getProfile(@Request() req: { user: Omit<User, 'password'> }) {
     return {
