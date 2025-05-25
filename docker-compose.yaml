@@ -1,6 +1,7 @@
 services:
   postgres:
     image: postgres:latest
+    container_name:  ginidocs-postgres
     environment:
       POSTGRES_USER: ${DB_USERNAME:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
@@ -9,6 +10,36 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - default
+
+  gotenberg:
+    image: gotenberg/gotenberg:8
+    container_name: ginidocs-gotenberg
+    ports:
+      - "3000:8081"
+    restart: unless-stopped
+    networks:
+      - default
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: ginidocs-mailpit
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    volumes:
+      - mailpit_data:/data
+    environment:
+      - MP_DATABASE=/data/mailpit.db
+    restart: unless-stopped
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
 
 volumes:
   postgres_data:
+  mailpit_data:
